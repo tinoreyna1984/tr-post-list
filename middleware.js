@@ -18,11 +18,11 @@ export default function middleware(req) {
     let url = req.url
 
     if (!verify && url.includes('/main')) {
-        return NextResponse.redirect("http://localhost:3000/");
+        return NextResponse.redirect(process.env.NEXT_PUBLIC_DOMAIN);
     }
 
-    if (verify && url === "http://localhost:3000/") {
-        return NextResponse.redirect("http://localhost:3000/main");
+    if (verify && url === process.env.NEXT_PUBLIC_DOMAIN) {
+        return NextResponse.redirect(`${process.env.NEXT_PUBLIC_DOMAIN}main`);
     }
 
 
